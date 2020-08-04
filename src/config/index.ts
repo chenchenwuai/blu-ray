@@ -1,12 +1,11 @@
 import * as _ from 'lodash'
-import { resolve } from 'path'
 
 import productionConfig from './prod.config'
 
 export const isProd = process.env.NODE_ENV === 'production'
 
 let config = {
-  port: 8000,
+  port: 8080,
   hostName: 'localhost',
 
   orm: {

@@ -14,12 +14,11 @@ import { Logger } from './common/utils/logger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
-
+  
   app.use(logger); // log middleware
   app.useGlobalFilters(new ErrorExceptionFilter()) // filter error exception
 
-  app.use(helmet())
+  // app.use(helmet())
   app.use(
     rateLimit({
       windowMs:15*60*1000,

@@ -30,8 +30,7 @@ export class ContextTrace {
   ) {}
 }
 
-Log4js.addLayout('nest-hello-world', (logConfig: any) => {
-  console.log('chalk',Chalk)
+Log4js.addLayout('nestjs', (logConfig: any) => {
   return (logEvent: Log4js.LoggingEvent): string => {
     let moduleName = ''
     let position = ''
@@ -142,35 +141,35 @@ if (isProd) {
 const logger = Log4js.getLogger()
 
 export class Logger {
-  static trace(...args) {
+  static trace(...args):void {
     logger.trace(Logger.getStackTrace(), ...args)
   }
 
-  static debug(...args) {
+  static debug(...args):void {
     logger.debug(Logger.getStackTrace(), ...args)
   }
 
-  static log(...args) {
+  static log(...args):void {
     logger.info(Logger.getStackTrace(), ...args)
   }
 
-  static info(...args) {
+  static info(...args):void {
     logger.info(Logger.getStackTrace(), ...args)
   }
 
-  static warn(...args) {
+  static warn(...args):void {
     logger.warn(Logger.getStackTrace(), ...args)
   }
 
-  static warning(...args) {
+  static warning(...args):void {
     logger.warn(Logger.getStackTrace(), ...args)
   }
 
-  static error(...args) {
+  static error(...args):void {
     logger.error(Logger.getStackTrace(), ...args)
   }
 
-  static fatal(...args) {
+  static fatal(...args):void {
     logger.fatal(Logger.getStackTrace(), ...args)
   }
 
