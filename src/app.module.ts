@@ -16,8 +16,8 @@ import { UserModule } from './features/user/user.module'
       password: 'root',
       database: 'blu_ray',
       synchronize: true,
-      entities: ['src/shared/entity/*.entity{ .ts,.js}'], // mapping class
-      migrations: ['src/shared/migration/**/*.ts'], // 存放数据库版本管控(migration)的目录
+      entities: ['dist/**/*.entity{ .ts,.js}'], // mapping class
+      migrations: ['dist/shared/migration/**/*.ts'], // 存放数据库版本管控(migration)的目录
       charset: 'utf8mb4'
     })
   ],
