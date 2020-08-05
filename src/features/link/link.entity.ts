@@ -39,7 +39,7 @@ export class LinkEntity {
     length: 11,
     default: ''
   })
-  Quality: string
+  quality: string
 
   @CreateDateColumn()
   create_time:string

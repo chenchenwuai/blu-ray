@@ -3,11 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 
 import { UserModule } from './features/user/user.module'
+import { MovieModule } from './features/movie/movie.module';
 
 
 @Module({
   imports: [
     UserModule,
+    MovieModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

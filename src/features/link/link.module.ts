@@ -6,4 +6,4 @@ import { LinkService } from './link.service';
   controllers: [LinkController],
   providers: [LinkService]
 })
-export class MovieModule {}
+export class LinkModule {}
