@@ -35,9 +35,9 @@ export class MovieEntity {
   language: string
 
   @Column({
-    type:'timestamp'
+    type:'varchar'
   })
-  release_date: number
+  release_date: string
 
   @Column({
     type:'varchar',

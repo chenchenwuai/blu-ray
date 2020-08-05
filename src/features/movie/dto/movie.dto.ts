@@ -9,7 +9,7 @@ export class CreateMovieDto{
   readonly language:string
 
   @IsNotEmpty()
-  readonly release_date:number
+  readonly release_date:string
 
   readonly time_length:string
 
