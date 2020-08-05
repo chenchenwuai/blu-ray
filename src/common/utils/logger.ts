@@ -1,7 +1,7 @@
 import Chalk = require('chalk')                                               
 Chalk.level = 3 
 import * as _ from 'lodash'
-import * as Log4js from 'log4js'
+import Log4js = require('log4js')
 import * as Moment from 'moment'
 import * as Path from 'path'
 import * as StackTrace from 'stacktrace-js'
@@ -54,7 +54,7 @@ Log4js.addLayout('nestjs', (logConfig: any) => {
 
     const messageOutput: string = messageList.join(' ')
     const positionOutput: string = position ? ` [${position}]` : ''
-    const typeOutput = `[${logConfig.type}] ${logEvent.pid.toString()}   - `
+    const typeOutput = `[${logConfig.type}] ${logEvent.pid.toString()} - `
     const dateOutput = `${Moment(logEvent.startTime).format(
       'YYYY-MM-DD HH:mm:ss',
     )}`
@@ -98,12 +98,12 @@ if (isProd) {
         filename: './logs/prod.log',
         pattern: '-yyyy-MM-dd.log',
         alwaysIncludePattern: true,
-        layout: { type: 'nest-hello-world' },
+        layout: { type: 'nestjs' },
         daysToKeep: 60,
       },
       console: {
         type: 'stdout',
-        layout: { type: 'nest-hello-world' },
+        layout: { type: 'nestjs' },
         level: 'info',
       },
       logLevelFilterAppender: {
@@ -126,7 +126,7 @@ if (isProd) {
     appenders: {
       console: {
         type: 'stdout',
-        layout: { type: 'nest-hello-world' },
+        layout: { type: 'nestjs' },
       },
     },
     categories: {

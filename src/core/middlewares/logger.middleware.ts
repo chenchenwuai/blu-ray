@@ -1,7 +1,7 @@
 import { Logger } from '../../common/utils/logger'
 import { Request,Response } from "express";
 
-export function logger(req:Request,res:Response,next:()=>void) {
+export function logger(req:Request,res:Response,next:()=>void): void {
 
   const statusCode = res.statusCode
   const logFormat = `${req.method} ${req.originalUrl} ip: ${req.ip} statusCode: ${statusCode}`

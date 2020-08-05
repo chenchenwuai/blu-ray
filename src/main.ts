@@ -6,7 +6,6 @@ import config from "./config"
 import { logger } from './core/middlewares/logger.middleware'
 import { ErrorExceptionFilter } from "./core/filters/error-exception.filter";
 
-import helmet from 'helmet' // xss 
 import * as rateLimit from 'express-rate-limit' // request rate
 import { DocumentBuilder,SwaggerModule} from '@nestjs/swagger' // swagger
 
@@ -18,7 +17,6 @@ async function bootstrap() {
   app.use(logger); // log middleware
   app.useGlobalFilters(new ErrorExceptionFilter()) // filter error exception
 
-  // app.use(helmet())
   app.use(
     rateLimit({
       windowMs:15*60*1000,
@@ -36,7 +34,7 @@ async function bootstrap() {
     .addBearerAuth()
     .build()
   const document = SwaggerModule.createDocument(app, swaggerOptions)
-  SwaggerModule.setup('swagger',app,document)
+  SwaggerModule.setup('/swagger',app,document)
 
   await app.listen(config.port,config.hostName,()=>{
     Logger.log(
