@@ -10,8 +10,6 @@ export class ErrorExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse()
     const request = ctx.getRequest()
 
-    Logger.error('Exception:',JSON.stringify(exception))
-
     let message = exception.message || 'Unknown Error'
     let isDeepestMessage = false
     while(!isDeepestMessage){
@@ -19,30 +17,30 @@ export class ErrorExceptionFilter implements ExceptionFilter {
       message = isDeepestMessage ? message : message.message
     }
 
-    const status = exception.getStatus && exception.getStatus() || HttpStatus.INTERNAL_SERVER_ERROR
+    const code = exception.getStatus && exception.getStatus() || HttpStatus.INTERNAL_SERVER_ERROR
 
     const errorResponse = {
-      status,
-      message,
-      timestamp: new Date().toISOString(),
-      path: request.url
+      code,
+      message
     }
+
+    const timestamp = new Date().toISOString()
 
     if(exception instanceof HttpException){
       Logger.error(
-        `Catch HTTP Exception at ${request.method} ${request.url} ${status} : ${JSON.stringify(errorResponse)}`
+        `Catch HTTP Exception at ${request.method} ${request.url} ${code} : ${JSON.stringify(errorResponse)} ${timestamp}`
       )
     }else{
-      errorResponse.status =  HttpStatus.INTERNAL_SERVER_ERROR
+      errorResponse.code =  HttpStatus.INTERNAL_SERVER_ERROR
       errorResponse.message = 'Server Error:'+message
       // 特殊处理
       if(isProd){ 
         Logger.error(
-          `Catch Error Exception at ${request.method} ${request.url} ${status} : ${JSON.stringify(errorResponse)}`
+          `Catch Error Exception at ${request.method} ${request.url} ${code} : ${JSON.stringify(errorResponse)} ${timestamp}`
         )
       }
     }
     
-    response.status(status).json(errorResponse);
+    response.status(code).json(errorResponse);
   }
 }

@@ -16,7 +16,7 @@ export class LinkEntity {
   @Column({
     type: 'varchar',
     length: 32,
-    default: ''
+    default: 'magnet'
   })
   type: string
 
@@ -37,7 +37,7 @@ export class LinkEntity {
   @Column({
     type: 'varchar',
     length: 11,
-    default: ''
+    default: '高清'
   })
   quality: string
 

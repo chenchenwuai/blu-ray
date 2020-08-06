@@ -5,6 +5,8 @@ import config from "./config"
 
 import { logger } from './core/middlewares/logger.middleware'
 import { ErrorExceptionFilter } from "./core/filters/error-exception.filter";
+import { ValidationPipe } from './core/pipes/validation.pipe';
+import { TransformInterceptor } from './core/interceptors/transform.interceptor';
 
 import * as rateLimit from 'express-rate-limit' // request rate
 import { DocumentBuilder,SwaggerModule} from '@nestjs/swagger' // swagger
@@ -16,6 +18,8 @@ async function bootstrap() {
   
   app.use(logger); // log middleware
   app.useGlobalFilters(new ErrorExceptionFilter()) // filter error exception
+  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalInterceptors(new TransformInterceptor())
 
   app.use(
     rateLimit({

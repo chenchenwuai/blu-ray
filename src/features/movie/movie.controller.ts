@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiQuery } from '@nestjs/swagger';
 import { MovieService } from './movie.service';
 import { MovieEntity } from "./movie.entity";
 import { CreateMovieDto } from './dto/movie.dto';
@@ -9,6 +9,7 @@ import { CreateMovieDto } from './dto/movie.dto';
 export class MovieController {
   constructor(private readonly movieService:MovieService){}
 
+  @ApiQuery({name:'id'})
   @Get(':id')
   async findOne(@Param('id') id:number):Promise<MovieEntity>{
     return await this.movieService.findOne(id)

@@ -1,17 +1,17 @@
 import { IsNotEmpty } from 'class-validator';
 
 export class CreateMovieDto{
-  @IsNotEmpty()
-  readonly name:string
+  @IsNotEmpty({message: '电影名称不能为空'})
+  name:string
 
-  readonly translation_name:string
-  readonly place:string
-  readonly language:string
-
-  @IsNotEmpty()
-  readonly release_date:string
-
-  readonly time_length:string
-
-  readonly links :any[]
+  translation_name?:string
+  place?:string
+  language?:string
+  release_date?:string
+  time_length?:string
+  director?:string
+  writer?:string
+  starring?:string
+  category?:string
+  links? :any[]
 }
