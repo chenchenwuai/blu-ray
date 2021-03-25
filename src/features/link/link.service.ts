@@ -24,7 +24,7 @@ export class LinkService {
     link.uri = linkData.uri
     link.size = linkData.size
     link.quality = linkData.quality
-    link.movie = movie
+    // link.movie = movie
     return await this.linkRepository.save(link)
   }
 }

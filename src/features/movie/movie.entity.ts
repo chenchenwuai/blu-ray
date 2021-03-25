@@ -90,6 +90,8 @@ export class MovieEntity {
   @UpdateDateColumn()
   update_time:string
 
-  @OneToMany(type => LinkEntity, link => link.movie)
-  links: LinkEntity[];
+  @OneToMany(type => LinkEntity, link => link.movie,{
+    eager:true
+  })
+  links: LinkEntity[]
 }

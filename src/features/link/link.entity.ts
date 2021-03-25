@@ -48,5 +48,6 @@ export class LinkEntity {
   update_time:string
 
   @ManyToOne(type => MovieEntity, movie => movie.links)
+  @JoinColumn({name:'movieId'})
   movie: MovieEntity;
 }
